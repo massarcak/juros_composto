@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Juros Compostos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .container {
+            background: #fff;
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #2ecc71;
+        }
+        #resultado {
+            font-size: 18px;
+            margin-top: 15px;
+            color: #2980b9;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora de Juros Compostos</h1>
+    <div class="container">
+        <input type="number" id="capital" placeholder="Capital inicial (R$)" step="0.01">
+        <input type="number" id="taxa" placeholder="Taxa de juros mensal (%)" step="0.01">
+        <input type="number" id="tempo" placeholder="Tempo (meses)">
+        <button onclick="calcular()">Calcular</button>
+        <div id="resultado"></div>
+    </div>
+
+    <footer>
+        © 2025 - SuaFerramenta.com | Desenvolvido por Você
+    </footer>
+
+    <script>
+        function calcular() {
+            let capital = parseFloat(document.getElementById('capital').value);
+            let taxa = parseFloat(document.getElementById('taxa').value) / 100;
+            let tempo = parseInt(document.getElementById('tempo').value);
+
+            if (isNaN(capital) || isNaN(taxa) || isNaN(tempo)) {
+                document.getElementById('resultado').innerHTML = "Preencha todos os campos corretamente.";
+                return;
+            }
+
+            let montante = capital * Math.pow((1 + taxa), tempo);
+            let juros = montante - capital;
+
+            document.getElementById('resultado').innerHTML = 
+                `<strong>Montante:</strong> R$ ${montante.toFixed(2)}<br>
+                 <strong>Juros:</strong> R$ ${juros.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>
