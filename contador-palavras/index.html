@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contador de Palavras</title>
+  <meta name="description" content="Contador de Palavras online gratuita. Rápida e fácil de usar.">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      text-align: center;
+    }
+    h1 { color: #2c3e50; margin-bottom: 20px; }
+    .container {
+      background: #fff;
+      max-width: 420px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    input, select, textarea, button {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #27ae60;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover { background: #2ecc71; }
+    #resultado {
+      font-size: 18px;
+      margin-top: 15px;
+      color: #2980b9;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contador de Palavras</h1>
+  <div class="container">
+    
+        <textarea id="texto" rows="6" placeholder="Digite seu texto aqui..."></textarea>
+        <button onclick="executarFerramenta()">Contar</button>
+        
+    <div id="resultado"></div>
+  </div>
+  <div class="footer">
+    © 2025 - SuaFerramenta.com
+  </div>
+  <script>
+        function executarFerramenta() {
+          const texto = document.getElementById('texto').value;
+          const palavras = texto.trim().split(/\s+/).filter(Boolean);
+          const caracteres = texto.replace(/\s/g, '');
+          document.getElementById('resultado').innerText = `Palavras: ${palavras.length} | Caracteres (sem espaços): ${caracteres.length}`;
+        }
+        </script>
+</body>
+</html>
